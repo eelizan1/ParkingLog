@@ -7,6 +7,7 @@ A simple parking lot system in Java. Vehicles enter and are assigned a spot that
 - Spot assignment by vehicle type (motorcycle, car, large)
 - Ticket issued on entry with a unique ID and entry time
 - Hourly fee on exit, with any partial hour rounded up to a full hour
+- Fee calculation behind a `PricingStrategy` interface (`HourlyPricing`, with `DynamicPricing` stubbed for future use)
 - Spots are freed on exit and tickets can't be reused
 - Injectable `Clock` so fees can be tested deterministically
 
@@ -15,13 +16,18 @@ A simple parking lot system in Java. Vehicles enter and are assigned a spot that
 ```
 src/io/github/eelizan1/parkinglot/
 ├── Main.java              # Example usage
-├── ParkingLot.java        # Core logic: enter, exit, fee calculation
+├── ParkingLot.java        # Core logic: enter, exit
 ├── enums/
 │   ├── SpotType.java
 │   └── VehicleType.java
-└── model/
-    ├── ParkingSpot.java
-    └── Ticket.java
+├── interfaces/
+│   └── PricingStrategy.java
+├── model/
+│   ├── ParkingSpot.java
+│   └── Ticket.java
+└── services/
+    ├── DynamicPricing.java  # Placeholder for surge / time-of-day pricing
+    └── HourlyPricing.java   # Hourly fee calculation
 test/io/github/eelizan1/parkinglot/
 └── ParkingLotTest.java    # JUnit 5 tests
 ```
