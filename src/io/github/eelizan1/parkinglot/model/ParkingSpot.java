@@ -1,5 +1,7 @@
 package io.github.eelizan1.parkinglot.model;
 
+import io.github.eelizan1.parkinglot.enums.SpotType;
+
 public class ParkingSpot {
     private String id;
     private SpotType spotType;

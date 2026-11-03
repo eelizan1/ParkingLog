@@ -16,11 +16,12 @@ A simple parking lot system in Java. Vehicles enter and are assigned a spot that
 src/io/github/eelizan1/parkinglot/
 ├── Main.java              # Example usage
 ├── ParkingLot.java        # Core logic: enter, exit, fee calculation
+├── enums/
+│   ├── SpotType.java
+│   └── VehicleType.java
 └── model/
     ├── ParkingSpot.java
-    ├── SpotType.java
-    ├── Ticket.java
-    └── VehicleType.java
+    └── Ticket.java
 test/io/github/eelizan1/parkinglot/
 └── ParkingLotTest.java    # JUnit 5 tests
 ```

@@ -1,5 +1,7 @@
 package io.github.eelizan1.parkinglot.model;
 
+import io.github.eelizan1.parkinglot.enums.VehicleType;
+
 public class Ticket {
     private String id;
     private String spotId;

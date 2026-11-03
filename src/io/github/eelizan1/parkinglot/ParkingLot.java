@@ -1,9 +1,9 @@
 package io.github.eelizan1.parkinglot;
 
+import io.github.eelizan1.parkinglot.enums.SpotType;
+import io.github.eelizan1.parkinglot.enums.VehicleType;
 import io.github.eelizan1.parkinglot.model.ParkingSpot;
 import io.github.eelizan1.parkinglot.model.Ticket;
-import io.github.eelizan1.parkinglot.model.SpotType;
-import io.github.eelizan1.parkinglot.model.VehicleType;
 
 import java.time.Clock;
 import java.util.*;

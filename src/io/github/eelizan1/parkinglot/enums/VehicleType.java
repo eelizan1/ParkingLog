@@ -1,4 +1,4 @@
-package io.github.eelizan1.parkinglot.model;
+package io.github.eelizan1.parkinglot.enums;
 
 public enum VehicleType {
     MOTORCYCLE,
