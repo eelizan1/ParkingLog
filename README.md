@@ -29,7 +29,9 @@ src/io/github/eelizan1/parkinglot/
     ├── DynamicPricing.java  # Placeholder for surge / time-of-day pricing
     └── HourlyPricing.java   # Hourly fee calculation
 test/io/github/eelizan1/parkinglot/
-└── ParkingLotTest.java    # JUnit 5 tests
+├── ParkingLotTest.java          # Entry, exit, and end-to-end fee tests
+└── services/
+    └── HourlyPricingTest.java   # Fee calculation tests
 ```
 
 ## Usage
