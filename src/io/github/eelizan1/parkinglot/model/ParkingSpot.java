@@ -1,3 +1,5 @@
+package io.github.eelizan1.parkinglot.model;
+
 public class ParkingSpot {
     private String id;
     private SpotType spotType;

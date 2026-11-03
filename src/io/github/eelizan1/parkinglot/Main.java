@@ -1,3 +1,10 @@
+package io.github.eelizan1.parkinglot;
+
+import io.github.eelizan1.parkinglot.model.ParkingSpot;
+import io.github.eelizan1.parkinglot.model.Ticket;
+import io.github.eelizan1.parkinglot.model.SpotType;
+import io.github.eelizan1.parkinglot.model.VehicleType;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
