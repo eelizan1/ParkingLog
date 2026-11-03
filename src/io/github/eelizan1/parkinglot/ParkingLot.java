@@ -4,6 +4,7 @@ import io.github.eelizan1.parkinglot.enums.SpotType;
 import io.github.eelizan1.parkinglot.enums.VehicleType;
 import io.github.eelizan1.parkinglot.model.ParkingSpot;
 import io.github.eelizan1.parkinglot.model.Ticket;
+import io.github.eelizan1.parkinglot.services.HourlyPricing;
 
 import java.time.Clock;
 import java.util.*;
@@ -12,8 +13,8 @@ public class ParkingLot {
     private final List<ParkingSpot> spots;
     private final Set<String> occupiedSpotIds;
     private final Map<String, Ticket> activeTickets;
-    private final double hourlyRate;
     private final Clock clock;
+    private final HourlyPricing hourlyPricing;
 
     public ParkingLot(List<ParkingSpot> spots, double hourlyRate) {
         this(spots, hourlyRate, Clock.systemUTC());
@@ -22,10 +23,10 @@ public class ParkingLot {
     // clock is injectable so tests can control entry/exit times
     public ParkingLot(List<ParkingSpot> spots, double hourlyRate, Clock clock) {
         this.spots = spots;
-        this.hourlyRate = hourlyRate;
         this.clock = clock;
         this.occupiedSpotIds = new HashSet<>();
         this.activeTickets = new HashMap<>();
+        this.hourlyPricing = new HourlyPricing(hourlyRate);
     }
 
     // Finds available spot, marks spot as occupied, creates ticket and marks as active
@@ -52,7 +53,7 @@ public class ParkingLot {
 
         if (ticket == null) throw new RuntimeException("Ticket not found");
 
-        Double fee = computeFee(ticket.getEntryTime(), clock.millis());
+        Double fee = hourlyPricing.calculateFee(ticket, clock.millis());
 
         occupiedSpotIds.remove(ticket.getSpotId());
         activeTickets.remove(ticketId);
@@ -87,14 +88,14 @@ public class ParkingLot {
         return null;
     }
 
-    private Double computeFee(long entryTime, long exitTime) {
-        long durationMillis = exitTime - entryTime;
-        long durationHours = durationMillis / (1000 * 60 * 60);
-
-        if (durationMillis % (1000 * 60 * 60) > 0) {
-            durationHours++;
-        }
-
-        return durationHours * hourlyRate;
-    }
+//    private Double computeFee(long entryTime, long exitTime) {
+//        long durationMillis = exitTime - entryTime;
+//        long durationHours = durationMillis / (1000 * 60 * 60);
+//
+//        if (durationMillis % (1000 * 60 * 60) > 0) {
+//            durationHours++;
+//        }
+//
+//        return durationHours * hourlyRate;
+//    }
 }
